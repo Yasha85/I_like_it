@@ -1,6 +1,7 @@
 <?php
 namespace Amasty\CoolModule\Controller\Message;
-class Index extends \Magento\Framework\App\Action\Action
+use Magento\Framework\App\Action\Action;
+class Index extends Action
 {
     public function execute()
     {

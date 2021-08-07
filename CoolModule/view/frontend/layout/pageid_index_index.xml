@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Amasty_CoolModule::css/nice.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <container name="CoolModule" htmlTag="div" htmlClass="container-add-form">
+            <block name="coolModule.Hello"
+                   template="Amasty_CoolModule::hello.phtml">
+            </block>
+            <block name="coolModule.form"  template="Amasty_CoolModule::Index.phtml">
+                <block name="coolModule.timer" template="Amasty_CoolModule::timer.phtml"/>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
