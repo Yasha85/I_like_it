@@ -1,10 +1,18 @@
 div.container-add-form {
-    border:5px solid red;
+    border: 5px solid red;
 }
+
+div.text-block {
+    text-align: center;
+}
+
 div.hello-block {
     text-align: center;
 }
-div.form {
-    text-align: center;
+
+form.CssClass {
+
 }
+
+
 
