@@ -1,9 +1,10 @@
 <?php
-/** @var Amasty\CoolModule\Block\Index $block */
 
+/** @var Amasty\CoolModule\Block\Index $block */
+$cssClassForm = $this->hasCssClassForm() ? ' ' . $this->getCssClassForm() : '';
 ?>
 
-<form>
+<form class="<?= $cssClassForm ?>">
     <fieldset>
         <legend>Поиск</legend>
         <p><label>Введите sku </label><input type="text" name="sku"></p>
@@ -12,7 +13,7 @@
     <div>
         <h3><?= $block->getChildHtml(); ?></h3>
     </div>
-    <p><input class="button" id="button" type="submit" value="Кнопка"></p>
+    <input class="button" type="submit" value="Кнопка">
 </form>
 
 
