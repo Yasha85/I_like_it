@@ -7,11 +7,14 @@
     <body>
         <referenceContainer name="content">
             <container name="CoolModule" htmlTag="div" htmlClass="container-add-form">
+                <arguments>
+                    <argument name="css_class_form" xsi:type="string">nice-form</argument>
+                </arguments>
                 <block name="coolModule.Hello"
                        template="Amasty_CoolModule::hello.phtml">
                 </block>
                 <block name="coolModule.form" template="Amasty_CoolModule::Index.phtml">
-                <block name="coolModule.timer" template="Amasty_CoolModule::timer.phtml"/>
+                    <block name="coolModule.timer" template="Amasty_CoolModule::timer.phtml"/>
                 </block>
             </container>
         </referenceContainer>
