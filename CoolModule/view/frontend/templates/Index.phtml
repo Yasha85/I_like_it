@@ -1,14 +1,17 @@
 <?php
 
 /** @var Amasty\CoolModule\Block\Index $block */
+
 $cssClassForm = $this->hasCssClassForm() ? ' ' . $this->getCssClassForm() : '';
 ?>
 
 <form class="<?= $cssClassForm ?>">
-    <fieldset>
+        <fieldset>
         <legend>Поиск</legend>
         <p><label>Введите sku </label><input type="text" name="sku"></p>
-        <p><label>Введите qty</label><input type="number" name="qty"></p>
+            <?php if($block->qtyDisplay()): ?>
+        <p><label>Введите qty</label><input type="number" value='<?=$block->inDefaultQty()?>' name="qty"></p>
+        <?php endif;?>
     </fieldset>
     <div>
         <h3><?= $block->getChildHtml(); ?></h3>

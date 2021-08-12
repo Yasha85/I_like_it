@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Amasty_CoolModule" translate="label" sortOrder="10">
+            <label>Amasty Cool Module</label>
+        </tab>
+            <section id="cool_config" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cool Module Config</label>
+            <tab>Amasty_CoolModule</tab>
+            <resource>Amasty_CoolModule::config</resource>
+            <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Config</label>
+                <field id="enabled" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Is Module Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="greeting_text" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Greeting Text</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="qty_display" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Qty Display</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="in_default_qty" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default QTY</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="qty_display">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+
