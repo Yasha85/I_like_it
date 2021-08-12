@@ -6,7 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template\Context;
 
-class Index extends Template
+class Hello extends Template
 {
     /**
      * @var ScopeConfigInterface
@@ -22,13 +22,8 @@ class Index extends Template
         parent::__construct($context, $data);
     }
 
-    public function qtyDisplay()
+    public function sayHelloFromConfig()
     {
-        return $this->scopeConfig->getValue('cool_config/general/qty_display');
-    }
-
-    public function inDefaultQty()
-    {
-        return $this->scopeConfig->getValue('cool_config/general/in_default_qty');
+        return $this->scopeConfig->getValue('cool_config/general/greeting_text');
     }
 }

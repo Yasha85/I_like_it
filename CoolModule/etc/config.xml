@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/config.xsd">
+    <default>
+        <cool_config>
+            <general>
+                <qty_display>1</qty_display>
+                <in_default_qty>0</in_default_qty>
+                <enabled>1</enabled>
+            </general>
+        </cool_config>
+    </default>
+</config>
