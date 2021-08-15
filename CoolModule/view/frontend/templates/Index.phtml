@@ -5,12 +5,12 @@
 $cssClassForm = $this->hasCssClassForm() ? ' ' . $this->getCssClassForm() : '';
 ?>
 
-<form class="<?= $cssClassForm ?>" action="<?=$block->getToForm()?>" method="get">
+<form class="<?= $cssClassForm ?>" action="<?=$block->getToForm()?>" data-mage-init='{"validation":{}}' method="get">
         <fieldset>
         <legend>Поиск</legend>
-        <p><label>Введите sku </label><input type="text" name="sku"></p>
+        <p><label>Введите sku </label><input type="text" class="required-entry" name="sku"></p>
             <?php if($block->qtyDisplay()): ?>
-        <p><label>Введите qty</label><input type="number" value='<?=$block->inDefaultQty()?>' name="qty"></p>
+        <p><label>Введите qty</label><input type="number" class="required-entry validate-greater-than-zero" value='<?=$block->inDefaultQty()?>' name="qty"></p>
         <?php endif;?>
     </fieldset>
     <div>
