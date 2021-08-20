@@ -54,7 +54,7 @@ class Add extends Action
     public function redirect()
     {
         $resultRedirect = $this->resultRedirectFactory->create();
-        $resultRedirect->setPath('page/index/index');
+        $resultRedirect->setPath('page');
         return $resultRedirect;
     }
 
@@ -68,28 +68,25 @@ class Add extends Action
             $quote->save();
         }
         try {
-            $product = $this->productRepository->get("$sku"); //Можно и через фабрику, но тут не обязательно.
-            if (!$product->getSku()) {
-                throw new NoSuchEntityException();
-            }
+            $product = $this->productRepository->get($sku); //Можно и через фабрику, но тут не обязательно.
 
         } catch (NoSuchEntityException $e) {
-            $this->messageManager->addNoticeMessage("Такого товара нет!!! Введите правильные данные");
+            $this->messageManager->addNoticeMessage('Такого товара нет!!! Введите правильные данные');
             return $this->redirect();
         }
 
         if ($product->getTypeId() !== 'simple') {
-            $this->messageManager->addNoticeMessage("Ваш продукт не такой уж и simple");
+            $this->messageManager->addNoticeMessage('Ваш продукт не такой уж и simple');
             return $this->redirect();
 
         } else {
 
             try {
-                $quote->addProduct($product, "$qty");
+                $quote->addProduct($product, $qty);
                 $quote->save();
 
             } catch (LocalizedException $e) {
-                $this->messageManager->addNoticeMessage("Слишком многого хотите! Будьте скромнее. P.S унас нет столько товара");
+                $this->messageManager->addNoticeMessage('Слишком многого хотите! Будьте скромнее. P.S унас нет столько товара');
             }
             return $this->redirect();
         }

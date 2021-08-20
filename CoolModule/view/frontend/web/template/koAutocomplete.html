@@ -1,0 +1,12 @@
+<div>
+    <label>Введите sku </label>
+    <input type="text" class="required-entry" data-bind="textInput: searchText" name="sku">
+    <div class="cool-autocomplete-list">
+        <ul data-bind="foreach: searchResult">
+            <li data-bind="text: $data"></li>
+        </ul>
+    </div>
+</div>
+
+
+

@@ -5,13 +5,16 @@
 $cssClassForm = $this->hasCssClassForm() ? ' ' . $this->getCssClassForm() : '';
 ?>
 
-<form class="<?= $cssClassForm ?>" action="<?=$block->getToForm()?>" data-mage-init='{"validation":{}}' method="get">
-        <fieldset>
+<form class="<?= $cssClassForm ?>" action="<?= $block->getToForm() ?>" data-mage-init='{"validation":{}}' method="get">
+    <fieldset>
         <legend>Поиск</legend>
-        <p><label>Введите sku </label><input type="text" class="required-entry" name="sku"></p>
-            <?php if($block->qtyDisplay()): ?>
-        <p><label>Введите qty</label><input type="number" class="required-entry validate-greater-than-zero" value='<?=$block->inDefaultQty()?>' name="qty"></p>
-        <?php endif;?>
+        <div data-bind="scope: 'coolAutocomplete'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+        </div>
+        <?php if ($block->qtyDisplay()): ?>
+            <p><label>Введите qty</label><input type="number" class="required-entry validate-greater-than-zero"
+                                                value='<?= $block->inDefaultQty() ?>' name="qty"></p>
+        <?php endif; ?>
     </fieldset>
     <div>
         <h3><?= $block->getChildHtml(); ?></h3>
@@ -20,4 +23,17 @@ $cssClassForm = $this->hasCssClassForm() ? ' ' . $this->getCssClassForm() : '';
 </form>
 
 
-
+<script type="text/x-magento-init">
+   {
+       "*": {
+           "Magento_Ui/js/core/app": {
+               "components": {
+                   "coolAutocomplete": {
+                       "component": "Amasty_CoolModule/js/koAutocomplete",
+                       "template" : "Amasty_CoolModule/koAutocomplete"
+                   }
+               }
+           }
+       }
+   }
+</script>
