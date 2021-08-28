@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+        <event name="amasty_coolModule_add_product">
+
+            <observer name="checkPromoSKU" instance="Amasty\SecondModule\Observer\CheckPromoSku"/>
+
+        </event>
+</config>

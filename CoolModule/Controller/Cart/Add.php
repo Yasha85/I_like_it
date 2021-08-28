@@ -11,6 +11,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Event\ManagerInterface as EventManager;
 
 class Add extends Action
 {
@@ -31,6 +32,11 @@ class Add extends Action
     private $productRepository;
 
     /**
+     * @var EventManager
+     */
+    private $eventManager;
+
+    /**
      * @var ProductCollectionFactory
      */
 
@@ -41,13 +47,15 @@ class Add extends Action
         ScopeConfigInterface       $scopeConfig,
         CheckoutSession            $session,
         ProductRepositoryInterface $productRepository,
-        ProductCollectionFactory   $productCollectionFactory
+        ProductCollectionFactory   $productCollectionFactory,
+        EventManager               $eventManager
     )
     {
         $this->scopeConfig = $scopeConfig;
         $this->session = $session;
         $this->productRepository = $productRepository;
         $this->productCollectionFactory = $productCollectionFactory;
+        $this->eventManager = $eventManager;
         parent::__construct($context);
     }
 
@@ -60,8 +68,14 @@ class Add extends Action
 
     public function execute()
     {
+
         $sku = $this->getRequest()->getParam('sku');
         $qty = $this->getRequest()->getParam('qty');
+
+        $this->eventManager->dispatch(
+            'amasty_coolModule_add_product',
+            ['product_to_check' => $sku]
+        );
 
         $quote = $this->session->getQuote();
         if (!$quote->getId()) {
@@ -69,7 +83,7 @@ class Add extends Action
         }
         try {
             $product = $this->productRepository->get($sku); //Можно и через фабрику, но тут не обязательно.
-
+//
         } catch (NoSuchEntityException $e) {
             $this->messageManager->addNoticeMessage('Такого товара нет!!! Введите правильные данные');
             return $this->redirect();
