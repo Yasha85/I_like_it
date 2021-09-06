@@ -5,8 +5,8 @@
         <tab id="Amasty_CoolModule" translate="label" sortOrder="10">
             <label>Amasty Cool Module</label>
         </tab>
-            <section id="cool_config" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>Cool Module Config</label>
+        <section id="cool_config" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cool Config</label>
             <tab>Amasty_CoolModule</tab>
             <resource>Amasty_CoolModule::config</resource>
             <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0">
@@ -36,6 +36,23 @@
                         <field id="qty_display">1</field>
                         <field id="enabled">1</field>
                     </depends>
+                </field>
+            </group>
+            <group id="send_email_config" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Send Email Config</label>
+                <field id="email" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Любимая жена</label>
+                    <validate>validate-email</validate>
+                </field>
+                <field id="email_template" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Selection Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+            <group id="cron_config" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cron Config</label>
+                <field id="timetable" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Timetable</label>
                 </field>
             </group>
         </section>

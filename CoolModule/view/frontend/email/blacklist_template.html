@@ -1,0 +1,16 @@
+<!--@subject Amasty CoolModule Blacklist QTY @-->
+<!--@vars
+ {
+"var blacklist":"Blacklist",
+"var blacklist_product_id":"Blacklist ID",
+"var product_sku":"Product Sku",
+"var product_qty":"Product Qty"
+ }
+ @-->
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans "In your blacklist with ID № %blacklist_product_id and SKU %product_sku has a limit:" blacklist_product_id=$blacklist_product_id product_sku=$product_sku}}</p>
+<h1>{{var blacklist.product_qty}}</h1>
+
+{{template config_path="design/email/footer_template"}}
+
