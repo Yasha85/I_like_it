@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="cool">
+        <job name="amasty_coolmodule_blacklist" instance="Amasty\CoolModule\Cron\SendBlacklistEmail" method="execute">
+            <config_path>cool_config/cron_config/timetable</config_path>
+        </job>
+    </group>
+</config>

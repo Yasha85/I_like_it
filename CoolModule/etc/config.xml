@@ -9,6 +9,13 @@
                 <in_default_qty>0</in_default_qty>
                 <enabled>1</enabled>
             </general>
+            <send_email_config>
+                <email>user@amasty.com</email>
+                <email_template>cool_config_send_email_config_email_template</email_template>
+            </send_email_config>
+            <cron_config>
+                <timetable>* * * * *</timetable>
+            </cron_config>
         </cool_config>
     </default>
 </config>

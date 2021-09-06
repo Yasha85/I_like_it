@@ -26,9 +26,23 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                     'comment' => 'Product QTY'
                 ]
-
             );
         }
+        if (version_compare($context->getVersion(), '0.0.3', '<')) {
+            $setup->getConnection()->addColumn
+            (
+                $setup->getTable(InstallSchema::TABLE_NAME),
+                'email_body',
+                [
+                    'type' => Table::TYPE_TEXT,
+                    255,
+                    'default' => '',
+                    'nullable' => false,
+                    'comment' => 'Email Body'
+                ]
+            );
+        }
+
         $setup->endSetup();
     }
 }
